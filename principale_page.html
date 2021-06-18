@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projet web sémantique</title>
+
+
+    <!-- Display on local -->
+    <script type="text/javascript" src="showData.js"></script>
+    <script type="text/javascript" src="dataLoading.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<style>
+    .onclick:hover{
+        text-decoration:underline
+    }
+</style>
+<body onload="load_page()">
+    <h4>Mohamed Souissi, Projet Web Sémantique. </h4>
+    <p style="color:red">Cliquez sur une lunette pour révéler les détails</p>
+
+    <table class="table table-dark" id="opticienTab">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Lunette</th>
+        </tr>
+        </thead>
+    </table>
+
+    <hr />
+
+    <div>
+        <h4>Lunette selectionné :</h4>
+		<hr />
+		<table>
+			<tr>
+                <td><p>id : </p></td>
+				<td> <p id="selectedLunetteId"></p></td>
+			</tr>
+			<tr>
+				<td><p>Nom : </p></td>
+                <td> <p id="selectedLunetteName"></p></td>
+			</tr>
+            <tr>
+                <td><p>Nombre de composants: </p></td>
+                <td> <p id="selectedLunetteComposant"></p></td>
+            </tr>
+		</table>
+		<p></p>
+    </div>
+
+
+
+    <div>
+        <p>composant présent dans la lunette selectionné :</p>
+        <br />
+        <table class="table table-dark" id="composantTab">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Composant</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+<script>
+
+    function load_page(){
+        display_data(prepare_data("Opticien"), prepare_data("Lunette"), prepare_data("Composant"))
+    }
+
+</script>

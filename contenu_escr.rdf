@@ -1,0 +1,241 @@
+==== Base ====
+<rdf>
+BASE <https://data.escr.fr/wiki/Liste_de_lunettes_et_d%27opticiens#>
+</rdf>
+
+==== Préfixes ====
+<rdf>
+PREFIX ex: <http://www.example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+</rdf>
+
+==== Classes ====
+
+===== Opticien =====
+<rdf>
+<Opticien> rdf:type rdfs:class.
+</rdf>
+
+===== Lunette =====
+<rdf>
+<Lunette> rdf:type rdfs:class.
+</rdf>
+
+===== Composant =====
+<rdf>
+<Composant> rdf:type rdfs:class.
+</rdf>
+
+==== Propriétés====
+===== Nom du composant =====
+<rdf>
+<composantName> rdf:type rdf:Property;
+      rdfs:domain <Composant>.
+</rdf>
+
+===== Matière du composant =====
+<rdf>
+<composantMatière> rdf:type rdf:Property;
+    rdfs:domain <Composant>.
+</rdf>
+
+===== Nom de l'opticien =====
+<rdf>
+<opticienName> rdf:type rdf:Property;
+    rdfs:domain <Opticien>.
+</rdf>
+
+===== Marque de lunette =====
+<rdf>
+<lunetteMarque> rdf:type rdf:Property;
+    rdfs:domain <Lunette>.
+</rdf>
+
+===== Prix de lunette =====
+<rdf>
+<lunettePrix> rdf:type rdf:Property;
+    rdfs:domain <Lunette>.
+</rdf>
+
+===== Opticien contient lunette =====
+<rdf>
+<opticienLunette> rdf:type rdf:Property;
+rdfs:domain <Opticien>;
+rdfs:range <Lunette>.
+</rdf>
+
+=== Exemple d'un jeu de données ===
+
+===== Composants =====
+<rdf>
+ex:monture_métal rdf:type <Composant> .
+ex:monture_métal <composantName> "Monture en métal" .
+ex:monture_métal <composantMatière> "Métal" .
+</rdf>
+
+<rdf>
+ex:monture_aluminium rdf:type <Composant> .
+ex:monture_aluminium <composantName> "Monture en aluminium" .
+ex:monture_aluminium <composantMatière> "Aluminium" .
+</rdf>
+
+<rdf>
+ex:monture_titane rdf:type <Composant> .
+ex:monture_titane <composantName> "Monture en titane" .
+ex:monture_titane <composantMatière> "Titane" .
+</rdf>
+
+<rdf>
+ex:verre_unifocaux rdf:type <Composant> .
+ex:verre_unifocaux <composantName> "Verre unifocaux" .
+ex:verre_unifocaux <composantMatière> "Verre minéral " .
+</rdf>
+
+<rdf>
+ex:verre_progressifs rdf:type <Composant> .
+ex:verre_progressifs <composantName> "Verre progressifs" .
+ex:verre_progressifs <composantMatière> "Verre polycarbonate " .
+</rdf>
+
+<rdf>
+ex:verre_midistance rdf:type <Composant> .
+ex:verre_midistance <composantName> "Verre midistance" .
+ex:verre_midistance <composantMatière> "Verre organique " .
+</rdf>
+
+===== lunettes =====
+<rdf>
+ex:lunette_john_jess_j43 rdf:type <Lunette> .
+ex:lunette_john_jess_j43 <lunetteMarque> "John & Jess" .
+ex:lunette_john_jess_j43 <lunettePrix> "150"^^xsd:double .
+ex:lunette_john_jess_j43 <lunetteComposant> ex:verre_midistance .
+ex:lunette_john_jess_j43 <lunetteComposant> ex:monture_titane .
+</rdf>
+
+<rdf>
+ex:lunette_SL_234_F_003 rdf:type <Lunette> .
+ex:lunette_SL_234_F_003 <lunetteMarque> "John & Jess" .
+ex:lunette_SL_234_F_003 <lunettePrix> "230"^^xsd:double .
+ex:lunette_SL_234_F_003 <lunetteComposant> ex:verre_progressifs .
+ex:lunette_SL_234_F_003 <lunetteComposant> ex:monture_aluminium .
+</rdf>
+
+<rdf>
+ex:lunette_carrera_1123 rdf:type <Lunette> .
+ex:lunette_carrera_1123 <lunetteMarque> "Carrera" .
+ex:lunette_carrera_1123 <lunettePrix> "380"^^xsd:double .
+ex:lunette_carrera_1123 <lunetteComposant> ex:verre_unifocaux .
+ex:lunette_carrera_1123 <lunetteComposant> ex:monture_aluminium .
+</rdf>
+
+===== Opticien =====
+<rdf>
+ex:opticien_courbevoie_1 rdf:type <Opticien> .
+ex:opticien_courbevoie_1 <opticienName> "Lissac l'Opticien Courbevoie" .
+ex:opticien_courbevoie_1 <opticienLunette> ex:lunette_carrera_1123 .
+ex:opticien_courbevoie_1 <opticienLunette> ex:lunette_SL_234_F_003 .
+</rdf>
+
+<rdf>
+ex:opticien_courbevoie_2 rdf:type <Opticien> .
+ex:opticien_courbevoie_2 <opticienName> "Opticien Krys Courbevoie" .
+ex:opticien_courbevoie_2 <opticienLunette> ex:lunette_john_jess_j43 .
+ex:opticien_courbevoie_2 <opticienLunette> ex:lunette_SL_234_F_003 .
+</rdf>
+
+<rdf>
+ex:opticien_courbevoie_3 rdf:type <Opticien> .
+ex:opticien_courbevoie_3 <opticienName> "L'Opticien-Optique Médicale" .
+ex:opticien_courbevoie_3 <opticienLunette> ex:lunette_john_jess_j43 .
+ex:opticien_courbevoie_3 <opticienLunette> ex:lunette_carrera_1123 .
+</rdf>
+
+=== Requêtes ===
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+SELECT * 
+WHERE {
+?s a <Composant> .
+}
+}}
+
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+SELECT * 
+WHERE {
+?s a <Opticien> .
+}
+}}
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+SELECT * 
+WHERE {
+?s a <Lunette> .
+}
+}}
+
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+PREFIX ex: <http://www.example.org/>
+SELECT *
+WHERE {
+  ex:verre_midistance ?p ?v .
+}
+}}
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+PREFIX ex: <http://www.example.org/>
+SELECT *
+WHERE {
+  ex:opticien_courbevoie_2 ?p ?v .
+}
+}}
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+PREFIX ex: <http://www.example.org/>
+SELECT *
+WHERE {
+  ex:opticien_courbevoie_3 ?p ?v .
+}
+}}
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+PREFIX ex: <http://www.example.org/>
+SELECT *
+WHERE {
+  ex:lunette_john_jess_j43 ?p ?v .
+}
+}}
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+PREFIX ex: <http://www.example.org/>
+SELECT *
+WHERE {
+  ex:lunette_carrera_1123 ?p ?v .
+}
+}}
+
+{{#sparql:
+BASE <https://data.escr.fr/wiki/Utilisateur:Moxa-esgi>
+PREFIX ex: <http://www.example.org/>
+SELECT *
+WHERE {
+  ex:lunette_SL_234_F_003 ?p ?v .
+}
+}}
+
+[[Catégorie:Démonstrateur]]
+[[Catégorie:Application Web]]
+[[Catégorie:Information environnementale]]
+
+== Démonstration ==
